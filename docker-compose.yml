@@ -1,0 +1,45 @@
+version: '3'
+services:
+
+  mariadb:
+    image: mariadb:10.3.9
+    container_name: ${APP_NAME}-mariadb
+    ports:
+      - '3306:3306'
+    restart: 'on-failure'
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:?err}
+      MYSQL_USER: ${MYSQL_USER:?err}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?err}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?err}
+    volumes:
+      - ${PWD}
+#    networks:
+#      - generaluuid
+
+#  php:
+#    # image: 'php:7.2-fpm'
+#    build:
+#      context: ./docker
+#      dockerfile: php.Dockerfile
+#    container_name: ${APP_NAME}-php
+#    links:
+#      - 'mariadb'
+#    networks:
+#      - generaluuid
+#    volumes:
+#      - './src:/var/www/html'
+#
+#  nginx:
+#    image: 'nginx:1.13.6'
+#    container_name: ${APP_NAME}-nginx
+#    links:
+#      - 'php'
+#    networks:
+#      - generaluuid
+#    volumes:
+#      - './src:/var/www/html'
+##      - './config/nginx:/etc/nginx/conf.d'
+
+#networks:
+#  generaluuid
