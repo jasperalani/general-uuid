@@ -5,7 +5,7 @@
 ```
 {
 	"type": String,
-	"length": Integer,
+	"length": Integer, (max 255)
 	"save": Boolean
 }
 ```
